@@ -12,6 +12,9 @@ function withOpacity(variableName) {
 module.exports = {
   theme: {
     extend: {
+      fontFamily: {
+        'amatic-sc': ['Amatic SC', 'sans-serif'], // Add your custom font here
+      },
       textColor: {
         skin: {
           base: withOpacity('--color-text-base'),
