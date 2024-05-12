@@ -1,14 +1,23 @@
 <template>
     <div>
-        <nav class="h-32 flex items-center justify-center flex-col space-y-8 drop-shadow-sm text-skin-base text-xl border-b">
-            <ul class="flex flex-row space-x-8 justify-center">
-                <li><NuxtLink to="/">Home</NuxtLink></li>
-                <li><NuxtLink to="/">Home2</NuxtLink></li>
-                <li><NuxtLink to="/">Home3</NuxtLink></li>
-                <li><NuxtLink to="/">Home4</NuxtLink></li>
-            </ul>
-            <div>
-                <div>Zsuzsánna Hand-made</div>
+        <nav class="drop-shadow-sm text-skin-base text-xl border-b p-2">
+            <div class="h-24 flex flex-col items-center justify-center">
+                <ul class="flex flex-row space-x-12 justify-center">
+                    <li><NuxtLink to="/">Product List</NuxtLink></li>
+                    <li><NuxtLink to="/">Contact</NuxtLink></li>
+                    <li><NuxtLink to="/">About Me</NuxtLink></li>
+                    <li><NuxtLink to="/" class="flex space-x-2">
+                        <div class="w-5">
+                            <img src="/fb.png"/>
+                        </div>
+                        <div class="w-5">
+                            <img src="/instagram.png"/>
+                        </div>
+                    </NuxtLink></li>
+                </ul>
+            </div>
+            <div class="text-center">
+                <div id="logo">Zsuzsánna Hand-made</div>
             </div>
         </nav>
     </div>

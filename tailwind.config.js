@@ -23,7 +23,9 @@ module.exports = {
       },
       backgroundColor: {
         skin: {
-          fill: withOpacity('--color-bg')
+          fill: withOpacity('--color-bg'),
+          button: withOpacity('--color-button'),
+          'button-hover': withOpacity('--color-button-hover')
         }
       },
     },

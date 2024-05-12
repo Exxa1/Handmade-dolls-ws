@@ -1,6 +1,14 @@
 # Doll 1
 
-![This is an alt text.](/img/dolls/doll1.png "This is a sample image.")
+one
+
+two
+::Carousel{productName="Artboard 2"}
+::
+
+::myButton
+Get One
+::
 
 ## What type of doll
 

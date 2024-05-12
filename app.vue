@@ -14,6 +14,6 @@
 .page-enter-from,
 .page-leave-to {
   opacity: 0;
-  filter: grayscale(1);
+  filter: blur(1rem);
 }
 </style>

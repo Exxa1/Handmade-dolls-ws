@@ -9,6 +9,8 @@
     :root {
         --color-text-base: 0, 0, 0;
         --color-text-muted: 110, 100, 20;
+        --color-button: 252, 206, 175;
+        --color-button-hover: 88, 111, 107;
         --color-bg: 255, 249, 241;
     }
     .theme-swiss {
