@@ -7,9 +7,9 @@
 /* Use rgb colors with three numbers. The names here should be assigned to tailwind classes in tailwind.config.js */
 @layer base {
     :root {
-        --color-text-base: 255, 180, 20;
+        --color-text-base: 0, 0, 0;
         --color-text-muted: 110, 100, 20;
-        --color-bg: 255, 255, 20;
+        --color-bg: 255, 249, 241;
     }
     .theme-swiss {
         --color-text-base: 20, 0, 0;

@@ -1,5 +1,5 @@
 <template>
-    <div class="font-amatic-sc">
+    <div class="font-amatic-sc bg-skin-fill">
     <Menu/>
         <slot/>
         Footer
