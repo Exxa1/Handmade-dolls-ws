@@ -10,7 +10,7 @@ export default defineNuxtConfig({
     pageTransition: {name: 'page', mode: 'out-in'}
   },
   css: ['~/assets/css/custom-tailwind.css'],
-  modules: ['@nuxtjs/tailwindcss', "@nuxt/content"],
+  modules: ["@nuxt/content", "@nuxt/ui"],
   nitro: {
     prerender: {
       routes: ['/sitemap.xml']

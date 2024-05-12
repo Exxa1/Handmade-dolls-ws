@@ -2,9 +2,9 @@
     <div class="not-prose"> 
         The component reads {{productName}}
         
-        <img :src="`/img/dolls/${productName}.png`">
+        <!-- <img :src="`/img/dolls/id001/${productName}.png`"> -->
         
-        <!-- <UCarousel v-slot="{ item }" :items="items" :ui="{item: 'basis-full', container: 'rounded-lg'}"
+        <UCarousel v-slot="{ item }" :items="items" :ui="{item: 'basis-full', container: 'rounded-lg'}"
         :prev-button="{
         color: 'gray',
         icon: 'i-heroicons-arrow-left-20-solid',
@@ -19,7 +19,7 @@
         class="w-64 mx-auto"
         >
         <img :src="item" class="w-full" draggable="false">
-        </UCarousel> -->
+        </UCarousel>
     </div>
 </template>
 
@@ -28,12 +28,12 @@ defineProps(
     ['productName']
 )
 
-// const items = [
-//   'https://picsum.photos/600/800?random=1',
-//   'https://picsum.photos/600/800?random=2',
-//   'https://picsum.photos/600/800?random=3',
-//   'https://picsum.photos/600/800?random=4',
-//   'https://picsum.photos/600/800?random=5',
-//   'https://picsum.photos/600/800?random=6'
-// ]
+const items = [
+  '/img/dolls/id001/Artboard 1.png',
+  'https://picsum.photos/600/800?random=2',
+  'https://picsum.photos/600/800?random=3',
+  'https://picsum.photos/600/800?random=4',
+  'https://picsum.photos/600/800?random=5',
+  'https://picsum.photos/600/800?random=6'
+]
 </script>
