@@ -4,7 +4,7 @@
         
         <!-- <img :src="`/img/dolls/id001/${productName}.png`"> -->
         
-        <UCarousel v-slot="{ item }" :items="items" :ui="{item: 'basis-full', container: 'rounded-lg'}"
+        <UCarousel v-slot="{ item }" :items="items" :ui="{item: 'basis-full'}" indicators
         :prev-button="{
         color: 'gray',
         icon: 'i-heroicons-arrow-left-20-solid',
