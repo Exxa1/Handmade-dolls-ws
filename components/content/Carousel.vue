@@ -7,13 +7,13 @@
         <UCarousel v-slot="{ item }" :items="items" :ui="{item: 'basis-full'}" indicators
         :prev-button="{
         color: 'gray',
-        icon: 'i-heroicons-arrow-left-20-solid',
-        class: '-left-12'
+        // icon: 'i-heroicons-arrow-left-20-solid',
+        class: '-left-5'
         }"
         :next-button="{
         color: 'gray',
-        icon: 'i-heroicons-arrow-right-20-solid',
-        class: '-right-12'
+        // icon: 'i-heroicons-arrow-right-20-solid',
+        class: '-right-5'
         }"
         arrows
         class="w-64 mx-auto"
