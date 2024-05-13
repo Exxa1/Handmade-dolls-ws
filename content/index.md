@@ -1,3 +1,3 @@
-MAIN PAIGE
+# This is the main page
 
 :productsList
