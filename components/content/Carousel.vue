@@ -1,5 +1,5 @@
 <template>
-    <div class="not-prose"> 
+    <div class="not-prose text-center"> 
         The component reads {{productName}}
         
         <!-- <img :src="`/img/dolls/id001/${productName}.png`"> -->
