@@ -1,11 +1,17 @@
+---
+# title: "Salamiu"
+id: 'id001'
+---
+
 # Doll 1
 
-::Carousel{productName="Artboard 2"}
+::Carousel{:productId="id"}
 ::
 
 ::myButton
 Get One
 ::
+
 
 ## What type of doll
 

@@ -1,6 +1,6 @@
 <template>
     <div class="not-prose text-center"> 
-        The component reads {{productName}}
+        The component reads {{productId}}
         
         <!-- <img :src="`/img/dolls/id001/${productName}.png`"> -->
         
@@ -24,16 +24,13 @@
 </template>
 
 <script setup>
-defineProps(
-    ['productName']
+const props = defineProps(
+    ['productId']
 )
 
-const items = [
-  '/img/dolls/id001/Artboard 1.png',
-  'https://picsum.photos/600/800?random=2',
-  'https://picsum.photos/600/800?random=3',
-  'https://picsum.photos/600/800?random=4',
-  'https://picsum.photos/600/800?random=5',
-  'https://picsum.photos/600/800?random=6'
-]
+const { data:imgRoute } = await useFetch(`/api/products/${props.productId}`)
+
+const items = imgRoute.value.imgPaths
+
+
 </script>
