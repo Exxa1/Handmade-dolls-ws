@@ -8,12 +8,12 @@
         :prev-button="{
         color: 'gray',
         // icon: 'i-heroicons-arrow-left-20-solid',
-        class: '-left-5'
+        class: '-left-5 hidden lg:inline-flex'
         }"
         :next-button="{
         color: 'gray',
         // icon: 'i-heroicons-arrow-right-20-solid',
-        class: '-right-5'
+        class: '-right-5 hidden lg:inline-flex'
         }"
         arrows
         class="w-64 mx-auto"
