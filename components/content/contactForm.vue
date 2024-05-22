@@ -20,9 +20,7 @@ const state = reactive({
   subject: undefined,
   senderMessage: undefined,
   // select: undefined,
-  checkbox: undefined,
-  switch: undefined,
-  selectMenu: undefined
+  singupForEmaillist: false,
 })
 
 const schema = z.object({
@@ -49,7 +47,7 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
   console.log(event.data)
 
   if (state.subject instanceof Object) {
-  state.subject = `BUYING A DOLL: ${state.subject.value}`;
+  state.subject = state.subject.value;
 }
 
 
@@ -95,8 +93,8 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
       <UTextarea v-model="state.senderMessage" />
     </UFormGroup>
 
-    <UFormGroup name="checkbox" label="Email list">
-      <UCheckbox v-model="state.checkbox" label="I would like to receive updates and deals" />
+    <UFormGroup name="singupForEmaillist" label="Email list">
+      <UCheckbox v-model="state.singupForEmaillist" label="I would like to receive updates and deals" />
     </UFormGroup>
 
     <UButton type="submit">

@@ -7,22 +7,17 @@ exports.handler = function(event, context, callback) {
     //     return callback(new Error('An error occurred!'))
     // }
 
-    // const data = JSON.parse(event.body)
-    const data = {
-        email: "from@email.com",
-        name: "Name Name",
-        message: "This is the message"
-    }
+    const data = JSON.parse(event.body)
 
     // if(data.antibot.length>0){
     //     return callback(new Error('Forbidden access'))
     // }
 
     let messageData = {
-        from: data.email,
+        from: data.senderEmail,
         to: receiver_mail,
-        subject: `Message received from ${data.name}`,
-        text: `${data.message}`
+        subject: `MESSAGE FROM WEBSITE: ${data.subject}`,
+        text: `REASON: ${data.reasonForContacting} \n SUBJECT: ${data.subject} \n  SINGUP: ${data.singupForEmaillist} \n MESSAGE: ${data.senderMessage}`
     }
 
     mailgun.messages().send(messageData, function (error) {
