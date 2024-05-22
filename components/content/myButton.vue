@@ -19,19 +19,26 @@ async function getData() {
   // Define your data here
   const myTodoData = {
     title: "My Todo Title",
-    description: "This is a description of my todo item."
+    email: "email@email"
   };
 
-  const todo = await $fetch('/.netlify/functions/response', {
+  const todo = await $fetch('/.netlify/functions/hello-world', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(myTodoData) // Convert JavaScript object to JSON string
   });
+  
 
-  console.log(todo);
-  showData.value = todo;
+    // Log the raw response text to verify the body content
+    // console.log('Raw response:', todo);
+
+
+
+//   console.log(todo);
+  showData.value = todo.message;
+  console.log(showData)
 }
 
 
