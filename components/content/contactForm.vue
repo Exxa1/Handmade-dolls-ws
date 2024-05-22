@@ -2,11 +2,25 @@
 import { z } from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
 
-const dollList = [
-  { label: 'Option 1', value: 'option-1' },
-  { label: 'Option 2', value: 'option-2' },
-  { label: 'Option 3', value: 'option-3' }
-]
+const {data: products} = await useAsyncData('dolls', () => queryContent('/products').only(['title', '_path', 'id']).find())
+
+const dollList = products.value.map(item => ({
+  label: item.title,
+  value: item.id
+}));
+
+const imgPlace = reactive({ url: ''});
+
+async function loadDollImage(dollId) {
+  const imgRoute = await $fetch(`/api/products/${dollId}`);
+  imgPlace.url = imgRoute.imgPaths[0]
+}
+
+// const dollList = [
+//   { label: 'Option 1', value: 'option-1' },
+//   { label: 'Option 2', value: 'option-2' },
+//   { label: 'Option 3', value: 'option-3' }
+// ]
 
 const reasonForContactingOptions = [
   { label: 'Interested in buying a doll', value: 'buy-a-doll' },
@@ -44,7 +58,6 @@ const form = ref()
 
 async function onSubmit (event: FormSubmitEvent<Schema>) {
   // Do something with event.data
-  console.log(event.data)
 
   if (state.subject instanceof Object) {
   state.subject = state.subject.value;
@@ -56,7 +69,17 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(state) // Convert JavaScript object to JSON string
+    body: JSON.stringify(state), // Convert JavaScript object to JSON string
+    async onResponse({ request, response, options }) {
+    // Log response
+    // console.log("[fetch response]", request, response.status, response.body);
+    if (response.status === 200){
+    useRouter().push('/message-success')
+    } else {
+      useRouter().push('/message-fail')
+    }
+
+  },
   });
 
 }
@@ -78,7 +101,10 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
 
     <UFormGroup name="subject">
       <UInput v-if="state.reasonForContacting === 'general-message'" placeholder="Subject" v-model="state.subject" />
-      <USelectMenu v-if="state.reasonForContacting === 'buy-a-doll'" v-model="state.subject" placeholder="Select the doll..." :options="dollList" />
+      <div v-if="state.reasonForContacting === 'buy-a-doll'">
+      <USelectMenu @change="loadDollImage(state.subject.value)" v-model="state.subject" placeholder="Select the doll..." :options="dollList" />
+      <img v-if="state.subject" :src="imgPlace.url"/>
+      </div>
     </UFormGroup>
 
     <!-- <UFormGroup v-if="state.reasonForContacting === 'general-message'" name="subject" label="Subject">

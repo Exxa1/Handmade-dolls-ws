@@ -20,6 +20,7 @@ exports.handler = function(event, context, callback) {
         text: `REASON: ${data.reasonForContacting} \n SUBJECT: ${data.subject} \n  SINGUP: ${data.singupForEmaillist} \n MESSAGE: ${data.senderMessage}`
     }
 
+
     mailgun.messages().send(messageData, function (error) {
         if (error) {
     		return callback(error);
