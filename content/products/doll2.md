@@ -8,7 +8,7 @@ id: 'id002'
 ::Carousel{:productId="id"}
 ::
 
-::myButton
+::myButton{:productId="id"}
 Get One
 ::
 

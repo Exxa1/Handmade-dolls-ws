@@ -1,6 +1,6 @@
 <template>
     <div class="not-prose text-center"> 
-        The component reads {{productId}}
+        ID: {{productId}}
         
         <!-- <img :src="`/img/dolls/id001/${productName}.png`"> -->
         

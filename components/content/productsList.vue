@@ -2,9 +2,10 @@
     <div class="not-prose">
         <ul class="flex space-x-20">
             <li v-for="product in products" :key="product._path">
-                <NuxtLink :to="product._path">{{ product.title }}</NuxtLink>
+                <div>{{ product.title }}</div>
                 <Carousel :productId="product.id"/>
-                <MyButton>Get ME</MyButton>
+                <SeeMoreButton :toPath="product._path">See More</SeeMoreButton>
+                <MyButton :productId="product.id">Get ME</MyButton>
             </li>
         </ul>
     </div>

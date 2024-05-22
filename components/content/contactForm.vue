@@ -83,6 +83,20 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
   });
 
 }
+
+// If gets to this page from another page, load parameters
+try {
+  const route = useRoute();
+  state.reasonForContacting = ref(route.query.reasonForContacting || '').value;
+  const idFromRoute = ref(route.query.id || '')
+  state.subject = dollList.find(item => item.value === idFromRoute.value);
+  // console.log(state.subject)
+  loadDollImage(state.subject.value)
+} catch {
+  console.log(`not loaded ${state}`)
+}
+
+
 </script>
 
 <template>
