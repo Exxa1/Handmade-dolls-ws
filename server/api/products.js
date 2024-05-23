@@ -9,7 +9,7 @@ import { serverQueryContent } from '#content/server'
 
 export default defineEventHandler(async (event) => {
 
-    const docs = await serverQueryContent(event).where({_path: {$contains: '/products'}}).only(['title', '_path', 'id']).find()    
+    const docs = await serverQueryContent(event).where({_path: {$contains: '/products'}}).only(['title', '_path', 'id', 'price']).find()    
 
     // const productsWithLinks = docs.map(product => ({...product, link: ''}));
 

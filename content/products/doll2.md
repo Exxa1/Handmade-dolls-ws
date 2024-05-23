@@ -1,6 +1,7 @@
 ---
 # title: "Salamiue"
 id: 'id002'
+price: '90€'
 ---
 
 # Peter

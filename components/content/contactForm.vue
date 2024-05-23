@@ -70,7 +70,7 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
 // Fills in the message with the doll info if a doll is picked to send
   if (state.reasonForContacting === 'buy-a-doll') {
     const selectedDoll = productsList.value.productsAPI.find(product => product.id === state.subject)
-    state.additionalInfo = `doll name: ${selectedDoll?.title}, doll link ${selectedDoll?._path}`
+    state.additionalInfo = `doll name - ${selectedDoll?.title}, doll link - ${selectedDoll?._path}, price - ${selectedDoll?.price}`
   }
 
   // Connects to a Netlify function to send email
@@ -127,8 +127,11 @@ try {
     <UFormGroup name="subject">
       <UInput v-if="state.reasonForContacting === 'general-message'" placeholder="Subject" v-model="state.subject" />
       <div v-if="state.reasonForContacting === 'buy-a-doll'">
-      <USelectMenu @change="loadDollImage(state.subject.value)" v-model="state.subject" placeholder="Select the doll..." :options="dollList" />
-      <img v-if="state.subject" :src="imgPlace.url" class="rounded-lg max-w-28"/>
+        <USelectMenu @change="loadDollImage(state.subject.value)" v-model="state.subject" placeholder="Select the doll..." :options="dollList" />
+          <div v-if="state.subject" class="flex flex-row justify-start space-x-5 items-center">
+            <img :src="imgPlace.url" class="rounded-lg max-w-28"/>
+            <p class="text-xl ">{{ productsList.productsAPI.find(product => product.id === state.subject.value).price }}</p>
+          </div>
       </div>
     </UFormGroup>
 

@@ -1,6 +1,7 @@
 ---
 # title: "Salamiue"
 id: 'id003'
+price: '70€'
 ---
 
 # Lucy
