@@ -11,14 +11,15 @@ const dollList = products.value.map(item => ({
 
 const imgPlace = reactive({ url: ''});
 
-async function loadDollImage(dollId) {
-  const imgRoute = await $fetch(`/api/products/${dollId}`);
-  imgPlace.url = imgRoute.imgPaths[0]
-}
+const {data:productsList, pending, error, refresh} = await useFetch('/api/products')
+// console.log(productsList.value.productsAPI[0].title)
 
-const router = useRouter()
-const routes = router.getRoutes()
-console.log(routes)
+async function loadDollImage(dollId) {
+  const selectDoll = productsList.value.productsAPI.find(product => product.id === dollId)
+  console.log(selectDoll)
+  console.log(selectDoll.imgLinks[0])
+  imgPlace.url = `/img/dolls/${selectDoll.id}/${selectDoll.imgLinks[0]}`
+}
 
 // const dollList = [
 //   { label: 'Option 1', value: 'option-1' },
@@ -61,7 +62,6 @@ type Schema = z.infer<typeof schema>
 const form = ref()
 
 async function onSubmit (event: FormSubmitEvent<Schema>) {
-  // Do something with event.data
 
   if (state.subject instanceof Object) {
   state.subject = state.subject.value;
@@ -97,7 +97,7 @@ try {
   // console.log(state.subject)
   loadDollImage(state.subject.value)
 } catch {
-  console.log(`not loaded ${state}`)
+  // console.log(`not loaded ${state}`)
 }
 
 

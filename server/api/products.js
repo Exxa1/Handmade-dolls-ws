@@ -14,17 +14,17 @@ export default defineEventHandler(async (event) => {
     // const productsWithLinks = docs.map(product => ({...product, link: ''}));
 
     for (const element of docs) {
-        console.log(element.id)
+        // console.log(element.id)
         const publicDir = path.join(process.cwd(), `public/img/dolls/${element.id}`);
         const filenames = fs.readdirSync(publicDir);
         element.imgLinks = filenames
-        console.log(element)
+        // console.log(element)
     }
 
 
     // const filenames = fs.readdirSync(publicDir);
 
     return {
-        products: docs
+        productsAPI: docs
     }
 })
