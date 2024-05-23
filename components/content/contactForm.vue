@@ -7,17 +7,21 @@ const {data:productsList, pending, error, refresh} = await useFetch('/api/produc
 
 // list of dolls to select from, automatically filled using api
 
-const dollList = productsList.value.productsAPI.map(item => ({
-  label: item.title,
-  value: item.id
-}));
+
+const dollList = Object.entries(productsList.value.productsAPI).reduce((acc, [key, value]) => {
+  acc.push({ label: value.title, value: value.id });
+  return acc;
+}, []);
+
+
 // link to the image shown when doll is selected, reactive property (always watched for change)
-const imgPlace = reactive({ url: ''});
+const imgPlace = reactive({ url: '', price: ''});
 
 // changes the imgPlace url which changes the photo shown when a doll is selected
 async function loadDollImage(dollId) {
-  const selectDoll = productsList.value.productsAPI.find(product => product.id === dollId)
+  const selectDoll = productsList.value.productsAPI[dollId]
   imgPlace.url = selectDoll.imgPaths[0]
+  imgPlace.price = productsList.value.productsAPI[dollId].price
 }
 
 // Options to choose from for reason for contacting
@@ -69,7 +73,7 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
 }
 // Fills in the message with the doll info if a doll is picked to send
   if (state.reasonForContacting === 'buy-a-doll') {
-    const selectedDoll = productsList.value.productsAPI.find(product => product.id === state.subject)
+    const selectedDoll = productsList.value.productsAPI[state.subject]
     state.additionalInfo = `doll name - ${selectedDoll?.title}, doll link - ${selectedDoll?._path}, price - ${selectedDoll?.price}`
   }
 
@@ -87,9 +91,9 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
     // Log response
     // console.log("[fetch response]", request, response.status, response.body);
     if (response.status === 200){
-      navigateTo('/message-success')
+      await navigateTo('/message-success')
     } else {
-      navigateTo('/message-fail')
+      await navigateTo('/message-fail')
     }
   },
   });
@@ -100,8 +104,7 @@ try {
   const route = useRoute();
   state.reasonForContacting = ref(route.query.reasonForContacting || '').value;
   const idFromRoute = ref(route.query.id || '')
-  state.subject = dollList.find(item => item.value === idFromRoute.value);
-  // console.log(state.subject)
+  state.subject = dollList.find(item => item.value === idFromRoute.value);;
   loadDollImage(state.subject.value)
 } catch {
   // console.log(`not loaded ${state}`)
@@ -130,7 +133,7 @@ try {
         <USelectMenu @change="loadDollImage(state.subject.value)" v-model="state.subject" placeholder="Select the doll..." :options="dollList" />
           <div v-if="state.subject" class="flex flex-row justify-start space-x-5 items-center">
             <img :src="imgPlace.url" class="rounded-lg max-w-28"/>
-            <p class="text-xl ">{{ productsList.productsAPI.find(product => product.id === state.subject.value).price }}</p>
+            <p class="text-xl ">{{ imgPlace.price }}</p>
           </div>
       </div>
     </UFormGroup>

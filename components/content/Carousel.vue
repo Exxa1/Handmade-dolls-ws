@@ -33,7 +33,7 @@ const { data:imgRoute } = await useFetch('/api/products', {
 })
 
 // const items = imgRoute.value.imgPaths
-const items = imgRoute.value.productsAPI.find(product => product.id === props.productId).imgPaths
+const items = imgRoute.value.productsAPI[props.productId].imgPaths
 
 
 </script>

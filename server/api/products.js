@@ -12,14 +12,17 @@ export default defineEventHandler(async (event) => {
     const docs = await serverQueryContent(event).where({_path: {$contains: '/products'}}).only(['title', '_path', 'id', 'price']).find()    
 
     // const productsWithLinks = docs.map(product => ({...product, link: ''}));
+    const docsWithId = {}
 
     for (const element of docs) {
+        const dollId = element.id
+        docsWithId[dollId]= element
         const publicDir = path.join(process.cwd(), `public/img/dolls/${element.id}`);
         const filenames = fs.readdirSync(publicDir);
-        element.imgPaths = []
+        docsWithId[dollId].imgPaths = []
         for (const filename of filenames) {
             // puts out the following which might cause problems: \\img\\dolls\\id001\\Artboard 1.png
-            element.imgPaths.push(path.join(`/img/dolls/${element.id}`, filename))
+            docsWithId[dollId].imgPaths.push(path.join(`/img/dolls/${element.id}`, filename))
         }
     }
 
@@ -27,6 +30,6 @@ export default defineEventHandler(async (event) => {
     // const filenames = fs.readdirSync(publicDir);
 
     return {
-        productsAPI: docs
+        productsAPI: docsWithId
     }
 })

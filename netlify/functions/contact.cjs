@@ -17,7 +17,7 @@ exports.handler = function(event, context, callback) {
         from: data.senderEmail,
         to: receiver_mail,
         subject: `MESSAGE FROM WEBSITE: ${data.subject}`,
-        text: ` REASON: ${data.reasonForContacting} \n SUBJECT: ${data.subject} \n SINGUP: ${data.singupForEmaillist} \n ADDITIONAL INFO: ${data.additionalInfo} \n MESSAGE: ${data.senderMessage}`
+        text: ` REASON: ${data.reasonForContacting} \n SUBJECT: ${data.subject} \n SINGUP: ${data.singupForEmaillist} \n ADDITIONAL INFO: ${data.additionalInfo} \n NAME: ${data.senderNames} \n MESSAGE: ${data.senderMessage}`
     }
 
 
