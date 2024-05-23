@@ -2,18 +2,19 @@
 import { z } from 'zod'
 import type { FormSubmitEvent } from '#ui/types'
 
-const {data: products} = await useAsyncData('dolls', () => queryContent('/products').only(['title', '_path', 'id']).find())
+//retrieve the list of products from api/products (which is a json file generated when static site is generated)
+const {data:productsList, pending, error, refresh} = await useFetch('/api/products')
 
-const dollList = products.value.map(item => ({
+// list of dolls to select from, automatically filled using api
+const dollList = productsList.value.productsAPI.map(item => ({
   label: item.title,
   value: item.id
 }));
 
+// link to the image shown when doll is selected, reactive property (always watched for change)
 const imgPlace = reactive({ url: ''});
 
-const {data:productsList, pending, error, refresh} = await useFetch('/api/products')
-// console.log(productsList.value.productsAPI[0].title)
-
+// changes the imgPlace url which changes the photo shown when a doll is selected
 async function loadDollImage(dollId) {
   const selectDoll = productsList.value.productsAPI.find(product => product.id === dollId)
   console.log(selectDoll)
@@ -21,17 +22,13 @@ async function loadDollImage(dollId) {
   imgPlace.url = `/img/dolls/${selectDoll.id}/${selectDoll.imgLinks[0]}`
 }
 
-// const dollList = [
-//   { label: 'Option 1', value: 'option-1' },
-//   { label: 'Option 2', value: 'option-2' },
-//   { label: 'Option 3', value: 'option-3' }
-// ]
-
+// Options to choose from for reason for contacting
 const reasonForContactingOptions = [
   { label: 'Interested in buying a doll', value: 'buy-a-doll' },
   { label: 'Other inquiries', value: 'general-message' },
 ]
 
+// saves the selected properties to send when form submitted
 const state = reactive({
   senderName: undefined,
   senderEmail: undefined,
@@ -42,6 +39,7 @@ const state = reactive({
   singupForEmaillist: false,
 })
 
+// checks if fills are valid in the form
 const schema = z.object({
   senderName: z.string().min(3),
   senderEmail: z.string().email('Invalid email'),
@@ -52,22 +50,23 @@ const schema = z.object({
     message: 'Please fill out'
   }),
   senderMessage: z.string().min(5),
-  // checkbox: z.boolean().refine(value => value === true, {
-  //   message: 'Check me'
-  // }),
 });
 
 type Schema = z.infer<typeof schema>
 
+// makes the form reactive ie. constantly watched for change. See more: https://vuejs.org/api/reactivity-core.html#ref
 const form = ref()
 
+
+// When the form is submitter
 async function onSubmit (event: FormSubmitEvent<Schema>) {
 
+  // makes sure state.subject is not an object but it's value (string)
   if (state.subject instanceof Object) {
   state.subject = state.subject.value;
 }
 
-
+  // Connects to a Netlify function to send email
   const contactFunctionResponse = await $fetch('/.netlify/functions/contact', {
     method: 'POST',
     headers: {
@@ -82,13 +81,11 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
     } else {
       navigateTo('/message-fail')
     }
-
   },
   });
-
 }
 
-// If gets to this page from another page, load parameters
+// If gets to this page from another page, load parameters from url query
 try {
   const route = useRoute();
   state.reasonForContacting = ref(route.query.reasonForContacting || '').value;
@@ -124,14 +121,6 @@ try {
       <img v-if="state.subject" :src="imgPlace.url"/>
       </div>
     </UFormGroup>
-
-    <!-- <UFormGroup v-if="state.reasonForContacting === 'general-message'" name="subject" label="Subject">
-      <UInput v-model="state.subject" />
-    </UFormGroup>
-
-    <UFormGroup v-if="state.reasonForContacting === 'buy-a-doll'" name="select" label="Which Doll">
-      <USelectMenu v-model="state.subject" placeholder="Select..." :options="options" />
-    </UFormGroup> -->
 
     <UFormGroup name="message" label="Message">
       <UTextarea v-model="state.senderMessage" />
