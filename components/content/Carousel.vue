@@ -28,9 +28,12 @@ const props = defineProps(
     ['productId']
 )
 
-const { data:imgRoute } = await useFetch(`/api/products/${props.productId}`)
+const { data:imgRoute } = await useFetch('/api/products', {
+  lazy: true
+})
 
-const items = imgRoute.value.imgPaths
+// const items = imgRoute.value.imgPaths
+const items = imgRoute.value.productsAPI.find(product => product.id === props.productId).imgPaths
 
 
 </script>

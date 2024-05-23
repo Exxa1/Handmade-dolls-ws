@@ -17,9 +17,7 @@ const imgPlace = reactive({ url: ''});
 // changes the imgPlace url which changes the photo shown when a doll is selected
 async function loadDollImage(dollId) {
   const selectDoll = productsList.value.productsAPI.find(product => product.id === dollId)
-  console.log(selectDoll)
-  console.log(selectDoll.imgLinks[0])
-  imgPlace.url = `/img/dolls/${selectDoll.id}/${selectDoll.imgLinks[0]}`
+  imgPlace.url = selectDoll.imgPaths[0]
 }
 
 // Options to choose from for reason for contacting

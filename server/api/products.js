@@ -14,11 +14,13 @@ export default defineEventHandler(async (event) => {
     // const productsWithLinks = docs.map(product => ({...product, link: ''}));
 
     for (const element of docs) {
-        // console.log(element.id)
         const publicDir = path.join(process.cwd(), `public/img/dolls/${element.id}`);
         const filenames = fs.readdirSync(publicDir);
-        element.imgLinks = filenames
-        // console.log(element)
+        element.imgPaths = []
+        for (const filename of filenames) {
+            // puts out the following which might cause problems: \\img\\dolls\\id001\\Artboard 1.png
+            element.imgPaths.push(path.join(`/img/dolls/${element.id}`, filename))
+        }
     }
 
 
