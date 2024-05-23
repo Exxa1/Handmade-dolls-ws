@@ -2,13 +2,12 @@
 id: 'id001'
 ---
 
-# Doll 1
+# Samu
 
 ::Carousel{:productId="id"}
 ::
 
 ::myButton{:productId="id"}
-Get One
 ::
 
 

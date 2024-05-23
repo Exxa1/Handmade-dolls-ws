@@ -1,3 +1,9 @@
+# Dev info
+
+The id in the doll md file has to match the folder name for that doll's pictures
+
+
+
 # Nuxt 3 Minimal Starter
 
 Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.

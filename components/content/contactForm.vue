@@ -6,11 +6,11 @@ import type { FormSubmitEvent } from '#ui/types'
 const {data:productsList, pending, error, refresh} = await useFetch('/api/products')
 
 // list of dolls to select from, automatically filled using api
+
 const dollList = productsList.value.productsAPI.map(item => ({
   label: item.title,
   value: item.id
 }));
-
 // link to the image shown when doll is selected, reactive property (always watched for change)
 const imgPlace = reactive({ url: ''});
 
@@ -35,6 +35,7 @@ const state = reactive({
   senderMessage: undefined,
   // select: undefined,
   singupForEmaillist: false,
+  additionalInfo: 'no info',
 })
 
 // checks if fills are valid in the form
@@ -66,6 +67,11 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
   if (state.subject instanceof Object) {
   state.subject = state.subject.value;
 }
+// Fills in the message with the doll info if a doll is picked to send
+  if (state.reasonForContacting === 'buy-a-doll') {
+    const selectedDoll = productsList.value.productsAPI.find(product => product.id === state.subject)
+    state.additionalInfo = `doll name: ${selectedDoll?.title}, doll link ${selectedDoll?._path}`
+  }
 
   // Connects to a Netlify function to send email
   const contactFunctionResponse = await $fetch('/.netlify/functions/contact', {
@@ -126,7 +132,7 @@ try {
       </div>
     </UFormGroup>
 
-    <UFormGroup name="message" label="Message">
+    <UFormGroup name="senderMessage" label="Message">
       <UTextarea v-model="state.senderMessage" />
     </UFormGroup>
 

@@ -1,9 +1,9 @@
 ---
 # title: "Salamiue"
-id: 'id002'
+id: 'id003'
 ---
 
-# Peter
+# Lucy
 
 ::Carousel{:productId="id"}
 ::
@@ -11,6 +11,6 @@ id: 'id002'
 ::myButton{:productId="id"}
 ::
 
-## What type of doll
+## More info about the doll
 
 Other info

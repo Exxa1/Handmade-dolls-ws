@@ -1,7 +1,7 @@
 <template>
-    <div class="font-amatic-sc bg-skin-fill min-h-screen">
+    <div class="font-amatic-sc bg-skin-fill">
     <Menu />
-        <slot/>
+        <slot />
     <Footer />
     </div>
 </template>

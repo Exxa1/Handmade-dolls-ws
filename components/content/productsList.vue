@@ -5,8 +5,8 @@
                 <Carousel :productId="product.id"/>
                 <div class="text-2xl text-center">{{ product.title }}</div>
                 <div class="flex flex-row justify-center">
-                    <SeeMoreButton :toPath="product._path">See More</SeeMoreButton>
-                    <MyButton :productId="product.id">Get ME</MyButton>
+                    <SeeMoreButton :toPath="product._path" />
+                    <MyButton :productId="product.id" />
                 </div>
             </li>
         </ul>
@@ -14,6 +14,8 @@
 </template>
 
 <script setup>
+
+// retrieves the products using NUXT CONTENT's query
 const {data: products} = await useAsyncData('dolls', () => queryContent('/products').only(['title', '_path', 'id']).find())
 
 </script>
