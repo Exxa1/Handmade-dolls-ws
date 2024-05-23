@@ -16,6 +16,10 @@ async function loadDollImage(dollId) {
   imgPlace.url = imgRoute.imgPaths[0]
 }
 
+const router = useRouter()
+const routes = router.getRoutes()
+console.log(routes)
+
 // const dollList = [
 //   { label: 'Option 1', value: 'option-1' },
 //   { label: 'Option 2', value: 'option-2' },
@@ -74,9 +78,9 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
     // Log response
     // console.log("[fetch response]", request, response.status, response.body);
     if (response.status === 200){
-    useRouter().push('/message-success')
+      navigateTo('/message-success')
     } else {
-      useRouter().push('/message-fail')
+      navigateTo('/message-fail')
     }
 
   },

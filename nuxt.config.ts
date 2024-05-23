@@ -16,7 +16,8 @@ export default defineNuxtConfig({
   modules: ["@nuxt/content", "@nuxt/ui"],
   nitro: {
     prerender: {
-      routes: ['/sitemap.xml']
+      crawlLinks: true,
+      routes: ['/sitemap.xml', '/message-fail', '/message-success']
     }
   }
 })

@@ -1,3 +1,6 @@
+//  Looks at how many pictures are available for doll with specific ID and returns the names of the pictures
+//  and their paths
+
 // server/middleware/readFiles.js
 import fs from 'fs';
 import path from 'path';
