@@ -1,6 +1,6 @@
 <template>
     <div class="not-prose text-center"> 
-        ID: {{productId}}
+        <!-- ID: {{productId}} -->
         
         <!-- <img :src="`/img/dolls/id001/${productName}.png`"> -->
         
@@ -16,7 +16,7 @@
         class: '-right-5 hidden lg:inline-flex'
         }"
         arrows
-        class="w-64 mx-auto"
+        class="mx-auto mb-2"
         >
         <img :src="item" class="w-full" draggable="false">
         </UCarousel>
@@ -29,7 +29,7 @@ const props = defineProps(
 )
 
 const { data:imgRoute } = await useFetch('/api/products', {
-  lazy: true
+
 })
 
 // const items = imgRoute.value.imgPaths

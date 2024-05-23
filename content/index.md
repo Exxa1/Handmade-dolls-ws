@@ -1,3 +1,3 @@
-# This is the main page
+# Available dolls
 
 :productsList

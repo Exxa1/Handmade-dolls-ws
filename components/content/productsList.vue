@@ -1,11 +1,13 @@
 <template>
     <div class="not-prose">
-        <ul class="flex space-x-20">
-            <li v-for="product in products" :key="product._path">
-                <div>{{ product.title }}</div>
+        <ul class="flex flex-wrap justify-evenly gap-8 lg:gap-16">
+            <li v-for="product in products" :key="product._path" class="w-min">
                 <Carousel :productId="product.id"/>
-                <SeeMoreButton :toPath="product._path">See More</SeeMoreButton>
-                <MyButton :productId="product.id">Get ME</MyButton>
+                <div class="text-2xl text-center">{{ product.title }}</div>
+                <div class="flex flex-row justify-center">
+                    <SeeMoreButton :toPath="product._path">See More</SeeMoreButton>
+                    <MyButton :productId="product.id">Get ME</MyButton>
+                </div>
             </li>
         </ul>
     </div>

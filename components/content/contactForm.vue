@@ -55,6 +55,9 @@ type Schema = z.infer<typeof schema>
 // makes the form reactive ie. constantly watched for change. See more: https://vuejs.org/api/reactivity-core.html#ref
 const form = ref()
 
+// using to avoid clicking on submit multiple times
+const sendState = ref({isRequestLoading : false})
+sendState.value.isRequestLoading = false
 
 // When the form is submitter
 async function onSubmit (event: FormSubmitEvent<Schema>) {
@@ -71,6 +74,9 @@ async function onSubmit (event: FormSubmitEvent<Schema>) {
       'Content-Type': 'application/json'
     },
     body: JSON.stringify(state), // Convert JavaScript object to JSON string
+    async onRequest({ request, options }) {
+      sendState.value.isRequestLoading = true
+  },
     async onResponse({ request, response, options }) {
     // Log response
     // console.log("[fetch response]", request, response.status, response.body);
@@ -116,7 +122,7 @@ try {
       <UInput v-if="state.reasonForContacting === 'general-message'" placeholder="Subject" v-model="state.subject" />
       <div v-if="state.reasonForContacting === 'buy-a-doll'">
       <USelectMenu @change="loadDollImage(state.subject.value)" v-model="state.subject" placeholder="Select the doll..." :options="dollList" />
-      <img v-if="state.subject" :src="imgPlace.url"/>
+      <img v-if="state.subject" :src="imgPlace.url" class="rounded-lg max-w-28"/>
       </div>
     </UFormGroup>
 
@@ -128,7 +134,10 @@ try {
       <UCheckbox v-model="state.singupForEmaillist" label="I would like to receive updates and deals" />
     </UFormGroup>
 
-    <UButton type="submit">
+    <UButton v-if="sendState.isRequestLoading">
+      Loading...
+    </UButton>
+    <UButton v-else type="submit">
       Submit
     </UButton>
 

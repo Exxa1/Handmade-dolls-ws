@@ -1,5 +1,5 @@
 <template>
-  <main class="prose max-w-screen-m mx-auto mt-5">
+  <main class="prose max-w-screen-m mx-auto mt-5 prose-h1:text-center">
     <ContentDoc>
       <template v-slot="{ doc }">
         <article>

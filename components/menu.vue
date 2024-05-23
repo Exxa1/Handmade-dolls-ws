@@ -6,18 +6,18 @@
                     <li><NuxtLink to="/">Product List</NuxtLink></li>
                     <li><NuxtLink to="/contact">Contact</NuxtLink></li>
                     <li><NuxtLink to="/aboutme">About Me</NuxtLink></li>
-                    <li><NuxtLink to="/" class="flex space-x-2">
-                        <div class="w-5">
+                    <li class="flex space-x-4">
+                        <NuxtLink to="https://www.facebook.com/mesehely" target="_blank" iv class="w-5">
                             <img src="/fb.png"/>
-                        </div>
-                        <div class="w-5">
+                        </NuxtLink>
+                        <NuxtLink to="https://www.instagram.com/mesehely/" target="_blank"  class="w-5">
                             <img src="/instagram.png"/>
-                        </div>
-                    </NuxtLink></li>
+                        </NuxtLink>
+                    </li>
                 </ul>
             </div>
             <div class="text-center">
-                <div id="logo">Zsuzsánna Hand-made</div>
+                <NuxtLink to="/"><div id="logo">Zsuzsánna Hand-made</div></NuxtLink>
             </div>
         </nav>
     </div>
