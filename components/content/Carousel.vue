@@ -18,7 +18,7 @@
         arrows
         class="mx-auto mb-2"
         >
-        <img :src="item" class="w-full" draggable="false">
+        <NuxtImg :src="item" class="w-full" draggable="false"/>
         </UCarousel>
     </div>
 </template>

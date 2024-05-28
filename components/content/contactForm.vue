@@ -132,7 +132,7 @@ try {
       <div v-if="state.reasonForContacting === 'buy-a-doll'">
         <USelectMenu @change="loadDollImage(state.subject.value)" v-model="state.subject" placeholder="Select the doll..." :options="dollList" />
           <div v-if="state.subject" class="flex flex-row justify-start space-x-5 items-center">
-            <img :src="imgPlace.url" class="rounded-lg max-w-28"/>
+            <NuxtImg :src="imgPlace.url" class="rounded-lg max-w-28"/>
             <p class="text-xl ">{{ imgPlace.price }}</p>
           </div>
       </div>

@@ -13,7 +13,7 @@ export default defineNuxtConfig({
     pageTransition: {name: 'page', mode: 'out-in'}
   },
   css: ['~/assets/css/custom-tailwind.css'],
-  modules: ["@nuxt/content", "@nuxt/ui"],
+  modules: ["@nuxt/content", "@nuxt/ui", "@nuxt/image"],
   nitro: {
     prerender: {
       crawlLinks: true,

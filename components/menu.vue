@@ -8,10 +8,10 @@
                     <li><NuxtLink to="/aboutme">About Me</NuxtLink></li>
                     <li class="flex space-x-4">
                         <NuxtLink to="https://www.facebook.com/mesehely" target="_blank" iv class="w-5">
-                            <img src="/fb.png"/>
+                            <NuxtImg src="/fb.png"/>
                         </NuxtLink>
                         <NuxtLink to="https://www.instagram.com/mesehely/" target="_blank"  class="w-5">
-                            <img src="/instagram.png"/>
+                            <NuxtImg src="/instagram.png"/>
                         </NuxtLink>
                     </li>
                 </ul>
