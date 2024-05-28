@@ -1,6 +1,6 @@
 ---
 id: 'id009'
-price: '100€'
+price: '120€'
 ---
 
 # Quirky Family

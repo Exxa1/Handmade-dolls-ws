@@ -1,6 +1,6 @@
 ---
 id: 'id008'
-price: '100€'
+price: '120€'
 ---
 
 # Disheveled Family

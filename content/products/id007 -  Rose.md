@@ -1,6 +1,6 @@
 ---
 id: 'id007'
-price: '90€'
+price: '160€'
 ---
 
 # Rose

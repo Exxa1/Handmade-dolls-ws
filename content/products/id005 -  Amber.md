@@ -1,6 +1,6 @@
 ---
 id: 'id005'
-price: '90€'
+price: '70€'
 ---
 
 # Amber

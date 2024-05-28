@@ -1,6 +1,6 @@
 ---
 id: 'id004'
-price: '100€'
+price: '140€'
 ---
 
 # Benjamin

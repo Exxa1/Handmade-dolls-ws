@@ -1,6 +1,6 @@
 ---
 id: 'id010'
-price: '50€'
+price: '35€'
 ---
 
 #  Iris's pocket garden
