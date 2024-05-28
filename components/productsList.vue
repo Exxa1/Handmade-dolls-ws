@@ -21,9 +21,5 @@
 <script setup>
 
 // retrieves the products using NUXT CONTENT's query
-const {data: products} = await useAsyncData('dolls', () => queryContent('/products').only(['title', '_path', 'id', 'price']).find())
-
-const counter = useCookie('counter')
-counter.value = counter.value || Math.round(Math.random() * 1000);
-
+const {data: products} = await useAsyncData('dolls', () => queryContent('/products').only(['title', '_path', 'id', 'price']).find());
 </script>
