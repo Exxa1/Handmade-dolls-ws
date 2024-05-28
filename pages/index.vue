@@ -12,6 +12,6 @@ useHead({
 
 <template>
     <div class="mx-auto px-24 pt-10 lg:px-48 xl:max-w-[1400px]">
-        <ProductsList/>
+        <ProductsList />
     </div>
 </template>

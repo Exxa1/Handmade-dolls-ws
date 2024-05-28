@@ -18,14 +18,17 @@
         arrows
         class="mx-auto mb-2"
         >
-        <NuxtImg :src="item" class="w-full" draggable="false"/>
+        <NuxtImg v-if="useInProductlist" width="416" height="556" :src="item" class="w-full" draggable="false"/>
+        <NuxtImg v-else :src="item" class="w-full" draggable="false"/>
         </UCarousel>
     </div>
 </template>
 
 <script setup>
 const props = defineProps(
-    ['productId']
+    ['productId',
+     'useInProductlist'
+    ]
 )
 
 const { data:imgRoute } = await useFetch('/api/products', {
