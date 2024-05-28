@@ -2,7 +2,7 @@
     <div>
         <nav class="drop-shadow-sm text-skin-base text-xl border-b p-2">
             <div class="h-24 flex flex-col items-center justify-center">
-                <ul class="flex flex-row space-x-12 justify-center">
+                <ul class="flex flex-row space-x-6 justify-center sm:space-x-16">
                     <li><NuxtLink to="/">Product List</NuxtLink></li>
                     <li><NuxtLink to="/contact">Contact</NuxtLink></li>
                     <li><NuxtLink to="/aboutme">About Me</NuxtLink></li>
