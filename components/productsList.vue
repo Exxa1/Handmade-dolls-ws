@@ -1,6 +1,5 @@
 <template>
     <div class="not-prose">
-        <div>counter: {{ counter }}</div>
         <ul class="flex flex-wrap justify-center gap-24 lg:gap-x-32">
             <li v-for="product in products" :key="product._path" class="w-min">
                 <Carousel :productId="product.id" :useInProductlist="true"/>
