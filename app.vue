@@ -40,6 +40,6 @@ useHead({
       type: 'image/png',
       href: '/favicon.ico'
     }
-  ]
+  ],
 })
 </script>
