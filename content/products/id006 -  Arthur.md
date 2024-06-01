@@ -1,6 +1,6 @@
 ---
 id: 'id006'
-price: '70€'
+price: 70
 ---
 
 # Arthur

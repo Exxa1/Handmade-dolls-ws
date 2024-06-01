@@ -1,6 +1,6 @@
 ---
 id: 'id003'
-price: '90€'
+price: 90
 ---
 
 # Bella

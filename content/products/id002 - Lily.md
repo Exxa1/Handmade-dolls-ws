@@ -1,6 +1,6 @@
 ---
 id: 'id002'
-price: '120€'
+price: 120
 ---
 
 # Lily

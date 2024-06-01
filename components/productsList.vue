@@ -6,7 +6,7 @@
                 <div class="text-2xl text-center flex flex-row justify-center space-x-2">
                     <h3>{{ product.title }}</h3>
                     <p>-</p>
-                    <h3>{{ product.price }}</h3>
+                    <h3>{{ product.price }}€</h3>
                 </div>
                 <div class="flex flex-row justify-center">
                     <SeeMoreButton :toPath="product._path" />
