@@ -22,5 +22,10 @@ export default defineNuxtConfig({
       crawlLinks: true,
       routes: ['/sitemap.xml', '/message-fail', '/message-success']
     }
+  },
+  image: {
+    cloudinary: {
+      baseURL: 'https://res.cloudinary.com/drops0vvg/image/upload/'
+    }
   }
 })
